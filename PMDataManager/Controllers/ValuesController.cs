@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Microsoft.AspNet.Identity;
 
 namespace PMDataManager.Controllers
 {
@@ -13,7 +14,8 @@ namespace PMDataManager.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            string userid = RequestContext.Principal.Identity.GetUserId();
+            return new string[] { "value1", "value2", userid };
         }
 
         // GET api/values/5
